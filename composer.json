@@ -1,11 +1,13 @@
 {
-  "name": "KETSE/casebox",
+  "name": "ketse/casebox",
   "license": "AGPL",
   "type": "project",
   "config": {
     "preferred-install": "dist",
     "autoloader-suffix": "Casebox",
-    "github-protocols": ["https"],
+    "github-protocols": [
+      "https"
+    ],
     "process-timeout": 600
   },
   "autoload": {
@@ -19,7 +21,7 @@
     ]
   },
   "require": {
-    "php": ">=5.5.9",
+    "php": ">=7.1",
     "symfony/symfony": "3.0.*",
     "twig/twig": "<2.0",
     "doctrine/orm": "^2.5",
@@ -32,13 +34,13 @@
     "sensio/generator-bundle": "^3.0",
     "symfony/doctrine-bridge": "^3.0",
     "sensio/framework-extra-bundle": "^3.0.2",
-    "kwi/urllinker": "@dev"
+    "kwi/urllinker": "*"
   },
   "require-dev": {
     "caseboxdev/core-bundle": "@dev",
     "caseboxdev/rpc-bundle": "@dev",
     "caseboxdev/rest-bundle": "@dev",
-    "phpunit/phpunit": "^5.2.12",
+    "phpunit/phpunit": "^6.5",
     "phpunit/php-code-coverage": "^3.3.0",
     "satooshi/php-coveralls": "dev-master",
     "squizlabs/php_codesniffer": "^2.6",

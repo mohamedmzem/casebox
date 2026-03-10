@@ -2,6 +2,7 @@ sudo: false
 language: php
 php:
   - 7.0
+  # TODO: Upgrade to PHP 8.x once bundles support it (see composer.json)
 
 cache:
     directories:
@@ -24,16 +25,15 @@ before_install:
     - mkdir -p build/logs
 
 install:
-    #add databases, install solr with cores install nginx
+    # Install system dependencies: databases, Solr cores, nginx
     - bash ci/travis/nginx/install-nginx.sh
     - bash ci/travis/install.sh
-    # install application
+    # Install PHP dependencies
     - curl -sS https://getcomposer.org/installer | php
     - php composer.phar install --no-interaction
 
-
 before_script:
-    # autoinstall CASEBOX
+    # Bootstrap CASEBOX environment
     - echo "CASEBOX | Index Casebox default core."
     - bin/console casebox:solr:update --all=true --env=default
     - echo "CASEBOX | Clear cache."
@@ -42,10 +42,9 @@ before_script:
     - bin/console doctrine:schema:update --force
 
 script:
-   # Run tests
-   - sleep 10
-#   - bash tests/run.sh
+    # Run the full test suite (unit + integration + coverage)
+    - bash tests/run.sh
 
 after_success:
-  - php vendor/bin/coveralls
-  - php vendor/bin/coveralls -v
+    # Upload coverage report to Coveralls
+    - php vendor/bin/coveralls -v

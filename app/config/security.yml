@@ -1,7 +1,9 @@
 # Security configurations
 security:
     encoders:
-        Casebox\CoreBundle\Entity\UsersGroups: sha512
+        Casebox\CoreBundle\Entity\UsersGroups:
+            algorithm: bcrypt
+            cost: 12
 
     providers:
         db_provider:

@@ -1,4 +1,4 @@
-# Monolog configuration
+# Swiftmailer configuration
 swiftmailer:
     transport: "%mailer_transport%"
     host: "%mailer_host%"
